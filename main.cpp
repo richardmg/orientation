@@ -1,6 +1,7 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QtGui/QScreen>
+#include <QtGui/QWindow>
 
 #include <QtDeclarative/QDeclarativeView>
 #include <QtDeclarative/QDeclarativeEngine>
@@ -28,6 +29,12 @@ class ScreenProxy : public QObject {
 
 signals:
     void orientationChanged(Qt::ScreenOrientation orientation);
+public slots:
+    void requestOrientation(Qt::ScreenOrientation orientation)
+    {
+        qDebug("request called");
+        qApp->focusWindow()->requestOrientation(orientation);
+    }
 };
 
 #include "main.moc"
