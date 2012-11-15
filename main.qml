@@ -4,7 +4,12 @@ Rectangle {
     id: root
     width: 800
     height: 600
-    color: green
+    color: "green"
+
+    Connections {
+        target: screen
+        onOrientationChanged: console.log("orientationChanged:" + orientation)
+    }
 
     Rectangle {
         width: 100
